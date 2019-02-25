@@ -38,11 +38,11 @@ def hook():
         messageId = webhookMessage["data"]["id"]
         print(messageId)
         url = "https://api.ciscospark.com/v1/messages/" + messageId
-	r = requests.get(url, headers={'Authorization': 'Bearer NjAzMzljMTItZTZiOS00YWFjLWI5ZGMtYmFhOWNmZTQwOWJmMmQ2ODFhYmUtMDJh_PF84_consumer'})
-	message = r.json()["text"]
-	print(message)
+        r = requests.get(url, headers={'Authorization': 'Bearer NjAzMzljMTItZTZiOS00YWFjLWI5ZGMtYmFhOWNmZTQwOWJmMmQ2ODFhYmUtMDJh_PF84_consumer'})
+        message = r.json()["text"]
+        print(message)
         return jsonify(webhookMessage)
-
+        
 def initDatabase():
     conn = sqlite3.connect('about.db') 
     cur = conn.cursor()
