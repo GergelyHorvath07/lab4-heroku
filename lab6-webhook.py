@@ -41,6 +41,12 @@ def hook():
         r = requests.get(url, headers={'Authorization': 'Bearer NjAzMzljMTItZTZiOS00YWFjLWI5ZGMtYmFhOWNmZTQwOWJmMmQ2ODFhYmUtMDJh_PF84_consumer'})
         message = r.json()["text"]
         print(message)
+        mentionedPeopleId = webhookMessage["data"]["mentionedPeople"] [0] 
+        print(mentionedPeopleId)
+        if mentionedPeopleId == "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvOTNkNzUyMTAtMzkzNi0xMWU5LTgwYmItYzM0ZTUwODFkNDIx":
+                roomId = r.json()["roomId"]
+                url="https://api.ciscospark.com/v1/messages"
+                r = requests.post(url, headers={'Authorization': 'Bearer NjAzMzljMTItZTZiOS00YWFjLWI5ZGMtYmFhOWNmZTQwOWJmMmQ2ODFhYmUtMDJh_PF84_consumer'}, data={'roomId': roomId, 'text': 'Hello From Your Bot!'})
         return jsonify(webhookMessage)
         
 def initDatabase():
